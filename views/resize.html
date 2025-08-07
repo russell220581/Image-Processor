@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resize Images | Image Processor</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/dropzone.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">Image Processor</div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/compress">Compress</a></li>
+          <li><a href="/resize" class="active">Resize</a></li>
+          <li><a href="/upscale">Upscale</a></li>
+          <li><a href="/svg2png">SVG to PNG</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="tool-container">
+      <h1>Resize Images</h1>
+      <p class="subtitle">Change dimensions to fit your needs</p>
+
+      <div class="upload-options">
+        <form id="resize-form" class="dropzone" enctype="multipart/form-data">
+          <div class="dz-message">
+            <input
+              type="file"
+              name="image"
+              id="resize-file-input"
+              accept="image/*"
+              style="display: none"
+            />
+            <label for="resize-file-input" class="file-input-label">
+              <p>Click to browse or drag & drop your image here</p>
+              <p class="small">(Supports JPG, PNG, WEBP up to 50MB)</p>
+            </label>
+          </div>
+        </form>
+
+        <div class="options-panel">
+          <div class="option">
+            <label for="width">Width (px)</label>
+            <input
+              type="number"
+              id="width"
+              name="width"
+              min="1"
+              placeholder="Leave empty to maintain aspect ratio"
+            />
+          </div>
+
+          <div class="option">
+            <label for="height">Height (px)</label>
+            <input
+              type="number"
+              id="height"
+              name="height"
+              min="1"
+              placeholder="Leave empty to maintain aspect ratio"
+            />
+          </div>
+
+          <div class="option">
+            <label for="fit">Resize Method</label>
+            <select id="fit" name="fit">
+              <option value="cover">Cover (default)</option>
+              <option value="contain">Contain</option>
+              <option value="fill">Fill</option>
+              <option value="inside">Inside</option>
+              <option value="outside">Outside</option>
+            </select>
+          </div>
+
+          <div class="option checkbox">
+            <input type="checkbox" id="no-enlarge" name="withoutEnlargement" />
+            <label for="no-enlarge">Don't enlarge if smaller</label>
+          </div>
+
+          <button type="button" id="resize-btn" class="process-btn" disabled>
+            Resize Image
+          </button>
+        </div>
+      </div>
+
+      <div class="result-container" id="result-container" style="display: none">
+        <h2>Your resized image is ready!</h2>
+        <div class="result-preview">
+          <img id="result-image" src="" alt="Resized result" />
+          <div class="result-info">
+            <div class="info-row">
+              <span>Original Dimensions:</span>
+              <span id="original-dimensions">-</span>
+            </div>
+            <div class="info-row">
+              <span>New Dimensions:</span>
+              <span id="new-dimensions">-</span>
+            </div>
+            <a id="download-btn" class="download-btn" href="#" download
+              >Download</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Image Processor. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/resize.js"></script>
+  </body>
+</html>

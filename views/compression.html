@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Compression | Image Processor</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">Image Processor</div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/compress" class="active">Compress</a></li>
+          <li><a href="/resize">Resize</a></li>
+          <li><a href="/upscale">Upscale</a></li>
+          <li><a href="/svg2png">SVG to PNG</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="tool-container">
+      <h1>Compress Images</h1>
+      <p class="subtitle">
+        Reduce file size without losing quality (1-5 images)
+      </p>
+
+      <!-- Upload Section -->
+      <div class="upload-section">
+        <div class="dropzone">
+          <input
+            type="file"
+            id="file-input"
+            accept="image/*"
+            multiple
+            style="display: none"
+          />
+          <label for="file-input" class="file-input-label">
+            <div class="dz-message">
+              <p>Click to browse or drag & drop images here</p>
+              <p class="small">
+                (Supports JPG, PNG, WEBP up to 50MB each, max 5 files)
+              </p>
+            </div>
+          </label>
+        </div>
+
+        <div class="options-panel">
+          <div class="option">
+            <label for="quality"
+              >Quality: <span id="quality-value">80%</span></label
+            >
+            <input type="range" id="quality" min="1" max="100" value="80" />
+          </div>
+
+          <div class="option">
+            <label for="format">Output Format</label>
+            <select id="format">
+              <option value="original">Original Format</option>
+              <option value="jpg">JPG</option>
+              <option value="png">PNG</option>
+              <option value="webp">WEBP</option>
+            </select>
+          </div>
+
+          <button id="compress-btn" class="process-btn" disabled>
+            Compress Images
+          </button>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div class="results-section" id="results-section" style="display: none">
+        <h2>Compression Results</h2>
+
+        <div class="result-actions">
+          <button id="download-all-btn" class="download-btn">
+            Download All as ZIP
+          </button>
+        </div>
+
+        <div id="results-list"></div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Image Processor. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/compression.js"></script>
+  </body>
+</html>

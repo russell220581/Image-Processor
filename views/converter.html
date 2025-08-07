@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG to PNG Converter | Image Processor</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/dropzone.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">Image Processor</div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/compress">Compress</a></li>
+          <li><a href="/resize">Resize</a></li>
+          <li><a href="/upscale">Upscale</a></li>
+          <li><a href="/svg2png" class="active">SVG to PNG</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="tool-container">
+      <h1>SVG to PNG Converter</h1>
+      <p class="subtitle">Convert vector graphics to raster images</p>
+
+      <div class="upload-options">
+        <form
+          id="svg-convert-form"
+          class="dropzone"
+          enctype="multipart/form-data"
+        >
+          <div class="dz-message">
+            <input
+              type="file"
+              name="image"
+              id="svg-file-input"
+              accept=".svg,image/svg+xml"
+              style="display: none"
+            />
+            <label for="svg-file-input" class="file-input-label">
+              <p>Click to browse or drag & drop your SVG file here</p>
+              <p class="small">(Supports SVG files up to 50MB)</p>
+            </label>
+          </div>
+        </form>
+
+        <div class="options-panel">
+          <div class="option">
+            <label for="svg-width">Width (px)</label>
+            <input
+              type="number"
+              id="svg-width"
+              name="width"
+              min="1"
+              placeholder="Leave empty for original size"
+            />
+          </div>
+
+          <div class="option">
+            <label for="svg-height">Height (px)</label>
+            <input
+              type="number"
+              id="svg-height"
+              name="height"
+              min="1"
+              placeholder="Leave empty for original size"
+            />
+          </div>
+
+          <button type="button" id="convert-btn" class="process-btn" disabled>
+            Convert to PNG
+          </button>
+        </div>
+      </div>
+
+      <div class="result-container" id="result-container" style="display: none">
+        <h2>Your PNG image is ready!</h2>
+        <div class="result-preview">
+          <img id="result-image" src="" alt="PNG result" />
+          <div class="result-info">
+            <div class="info-row">
+              <span>Original Format:</span>
+              <span>SVG</span>
+            </div>
+            <div class="info-row">
+              <span>Converted Format:</span>
+              <span>PNG</span>
+            </div>
+            <div class="info-row">
+              <span>Dimensions:</span>
+              <span id="dimensions">-</span>
+            </div>
+            <a id="download-btn" class="download-btn" href="#" download
+              >Download</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Image Processor. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/converter.js"></script>
+  </body>
+</html>
